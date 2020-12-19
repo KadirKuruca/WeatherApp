@@ -4,7 +4,7 @@ import android.app.Application
 import android.location.Location
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
+import com.kadirkuruca.weatherapp.network.Model.CityLocations
 import com.kadirkuruca.weatherapp.repository.CityActivityRepository
 
 /**
@@ -14,11 +14,11 @@ class CityActivityViewModel(application : Application) : AndroidViewModel(applic
 
     private val repository = CityActivityRepository(application)
     val showProgress : LiveData<Boolean>
-    val currentLocation : LiveData<Location>
+    val nearbyCities : LiveData<List<CityLocations>>
 
     init {
         this.showProgress = repository.showProgress
-        this.currentLocation = repository.currentLocation
+        this.nearbyCities = repository.nearbyCities
     }
 
     fun changeState(){
@@ -27,5 +27,9 @@ class CityActivityViewModel(application : Application) : AndroidViewModel(applic
 
     fun getLocation(){
         repository.getLocation()
+    }
+
+    fun getNearbyCities(location: Location){
+        repository.getNearbyCities(location)
     }
 }

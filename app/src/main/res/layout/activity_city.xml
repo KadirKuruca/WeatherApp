@@ -10,13 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/btnStop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Stop"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="25dp"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerCity"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/rv_location_child"
+            />
 
         <ProgressBar
             android:id="@+id/progress"
@@ -25,6 +24,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:visibility="gone"
+            tools:visibility="visible"
             />
 
 
