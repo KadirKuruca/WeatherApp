@@ -15,21 +15,19 @@ class CityActivityViewModel(application : Application) : AndroidViewModel(applic
     private val repository = CityActivityRepository(application)
     val showProgress : LiveData<Boolean>
     val nearbyCities : LiveData<List<CityLocations>>
+    val isOnline : LiveData<Boolean>
 
     init {
         this.showProgress = repository.showProgress
         this.nearbyCities = repository.nearbyCities
-    }
-
-    fun changeState(){
-        repository.changeState()
+        this.isOnline = repository.isOnline
     }
 
     fun getLocation(){
         repository.getLocation()
     }
 
-    fun getNearbyCities(location: Location){
-        repository.getNearbyCities(location)
+    fun controlNetwork(){
+        repository.controlNetwork()
     }
 }

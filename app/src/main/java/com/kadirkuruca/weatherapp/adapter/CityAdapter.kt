@@ -1,12 +1,14 @@
 package com.kadirkuruca.weatherapp.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.kadirkuruca.weatherapp.R
 import com.kadirkuruca.weatherapp.network.Model.CityLocations
+import com.kadirkuruca.weatherapp.view.CityWeatherDetailActivity
 import kotlinx.android.synthetic.main.rv_location_child.view.*
 
 /**
@@ -17,7 +19,7 @@ class CityAdapter(private val context : Context) :
 
     private var list : List<CityLocations> = ArrayList()
 
-    fun setCityLocations(list : List<CityLocations>){
+    fun setLocationList(list : List<CityLocations>){
         this.list = list
         notifyDataSetChanged()
     }
@@ -39,10 +41,18 @@ class CityAdapter(private val context : Context) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.distance.text = "Distance : ${list[position].distance.toDouble() / 1000} km"
         holder.name.text = list[position].title
+
+        holder.rootView.setOnClickListener {
+            val intent = Intent(context, CityWeatherDetailActivity::class.java)
+            intent.putExtra("title",list[position].title)
+            intent.putExtra("woeid",list[position].woeid)
+            context.startActivity(intent)
+        }
     }
 
     class ViewHolder(v : View) : RecyclerView.ViewHolder(v) {
         val name = v.tvCityName!!
         val distance = v.tvDistance!!
+        val rootView = v.rootView!!
     }
 }

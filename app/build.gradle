@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.kadirkuruca.weatherapp"
-        minSdkVersion 14
+        minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -62,4 +62,9 @@ dependencies {
     //Gms Location
     implementation 'com.google.android.gms:play-services-location:17.1.0'
 
+    //Donut chart
+    implementation("app.futured.donut:library:2.1.0")
+
+    //swipe to refresh
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 }
