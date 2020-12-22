@@ -4,6 +4,7 @@ import android.app.Application
 import android.location.Location
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.kadirkuruca.weatherapp.network.Model.CityLocations
 import com.kadirkuruca.weatherapp.repository.CityActivityRepository
 
@@ -16,11 +17,13 @@ class CityActivityViewModel(application : Application) : AndroidViewModel(applic
     val showProgress : LiveData<Boolean>
     val nearbyCities : LiveData<List<CityLocations>>
     val isOnline : LiveData<Boolean>
+    val isGpsEnable : LiveData<Boolean>
 
     init {
         this.showProgress = repository.showProgress
         this.nearbyCities = repository.nearbyCities
         this.isOnline = repository.isOnline
+        this.isGpsEnable = repository.isGpsEnable
     }
 
     fun getLocationAndNearbyCities(){
@@ -29,5 +32,9 @@ class CityActivityViewModel(application : Application) : AndroidViewModel(applic
 
     fun controlNetwork(){
         repository.controlNetwork()
+    }
+
+    fun gpsCheck(){
+        repository.gpsCheck()
     }
 }

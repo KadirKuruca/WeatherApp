@@ -2,12 +2,15 @@ package com.kadirkuruca.weatherapp.repository
 
 import android.annotation.SuppressLint
 import android.app.Application
+import android.content.Context
+import android.content.Context.LOCATION_SERVICE
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.MutableLiveData
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.kadirkuruca.weatherapp.R
@@ -29,6 +32,7 @@ class CityActivityRepository(val application: Application) {
     val showProgress = MutableLiveData<Boolean>()
     val nearbyCities = MutableLiveData<List<CityLocations>>()
     val isOnline = MutableLiveData<Boolean>()
+    val isGpsEnable = MutableLiveData<Boolean>()
 
     fun controlNetwork() {
         isOnline.value = GlobalFunctions.isOnline(application)
@@ -76,6 +80,11 @@ class CityActivityRepository(val application: Application) {
             }
 
         })
+    }
+
+    fun gpsCheck() {
+        val manager = application.getSystemService(LOCATION_SERVICE) as LocationManager
+        isGpsEnable.value = manager.isProviderEnabled(LocationManager.GPS_PROVIDER)
     }
 }
 

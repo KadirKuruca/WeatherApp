@@ -1,10 +1,13 @@
 package com.kadirkuruca.weatherapp.view
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.provider.Settings
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -29,10 +32,8 @@ class CityActivity : AppCompatActivity() {
 
         init()
 
-        viewModel.controlNetwork()
-
         btnNetworkControl.setOnClickListener {
-            viewModel.controlNetwork()
+            viewModel.gpsCheck()
         }
 
         swiperCity.setOnRefreshListener {
@@ -48,8 +49,8 @@ class CityActivity : AppCompatActivity() {
 
         viewModel.isOnline.observe(this, Observer {
             if(it){
-                viewModel.getLocationAndNearbyCities()
                 frameConnection.visibility = GONE
+                viewModel.getLocationAndNearbyCities()
             }
             else{
                 frameConnection.visibility = VISIBLE
@@ -63,6 +64,29 @@ class CityActivity : AppCompatActivity() {
             else
                 Toast.makeText(this,getString(R.string.cities_listing_error), Toast.LENGTH_SHORT).show()
         })
+
+        viewModel.isGpsEnable.observe(this, Observer {
+            if(it)
+                viewModel.controlNetwork()
+            else{
+                buildAlertMessageNoGps()
+            }
+        })
+
+    }
+
+    private fun buildAlertMessageNoGps() {
+        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+        builder.setMessage("Your GPS seems to be disabled, do you want to enable it?")
+            .setCancelable(false)
+            .setPositiveButton("Yes",
+                { dialog, id -> startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
+                    dialog.dismiss()
+                })
+            .setNegativeButton("No",
+                { dialog, id -> dialog.cancel() })
+        val alert: AlertDialog = builder.create()
+        alert.show()
     }
 
     private fun init(){
@@ -75,5 +99,12 @@ class CityActivity : AppCompatActivity() {
         adapter = CityAdapter(this)
         recyclerCity!!.layoutManager = layoutManager
         recyclerCity!!.adapter = adapter
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Handler().postDelayed({
+            viewModel.gpsCheck()
+        },500)
     }
 }
