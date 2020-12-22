@@ -19,8 +19,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:textSize="24sp"
-            android:text="İSTANBUL"
+            android:textSize="18sp"
+            android:text=""
             android:textColor="@android:color/white"/>
 
         <TextView
@@ -28,10 +28,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_marginBottom="10dp"
             android:layout_alignParentBottom="true"
-            android:text="Uzaklık : 1.2 Km"
+            android:text=""
             android:textColor="@android:color/white"/>
 
         <View

@@ -23,8 +23,8 @@ class CityActivityViewModel(application : Application) : AndroidViewModel(applic
         this.isOnline = repository.isOnline
     }
 
-    fun getLocation(){
-        repository.getLocation()
+    fun getLocationAndNearbyCities(){
+        repository.getLocationAndNearbyCities()
     }
 
     fun controlNetwork(){

@@ -39,7 +39,8 @@ class CityAdapter(private val context : Context) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.distance.text = "Distance : ${list[position].distance.toDouble() / 1000} km"
+        val distance = String.format("%.1f",list[position].distance.toDouble() / 1000)
+        holder.distance.text = "Distance : ${distance} km"
         holder.name.text = list[position].title
 
         holder.rootView.setOnClickListener {

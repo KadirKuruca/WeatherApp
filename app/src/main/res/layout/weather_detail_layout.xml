@@ -35,8 +35,8 @@
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="15dp"
-                    android:layout_toRightOf="@+id/tvCurrentTemp" />
+                    android:layout_marginStart="15dp"
+                    android:layout_toEndOf="@+id/tvCurrentTemp" />
 
             </RelativeLayout>
 
@@ -67,7 +67,7 @@
                 android:layout_below="@+id/tvStateName"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="50dp"
-                android:drawableRight="@drawable/ic_location"
+                app:drawableRightCompat="@drawable/ic_location"
                 android:drawablePadding="2dp"
                 android:text=""
                 android:textColor="@android:color/white"
@@ -122,7 +122,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:text="Humidity"
+                        android:text="@string/humidity"
                         android:textColor="@android:color/white"
                         android:textSize="18sp" />
 
@@ -152,7 +152,7 @@
                 android:id="@+id/relGeneral"
                 android:layout_width="wrap_content"
                 android:layout_height="190dp"
-                android:layout_toRightOf="@+id/relHumidity"
+                android:layout_toEndOf="@+id/relHumidity"
                 android:padding="15dp">
 
                 <RelativeLayout
@@ -164,16 +164,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:text="General"
+                        android:text="@string/general"
                         android:textColor="@android:color/white"
                         android:textSize="18sp" />
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginRight="50dp"
+                        android:layout_marginEnd="50dp"
                         android:gravity="center">
 
                         <TextView
@@ -181,7 +181,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="5dp"
-                            android:text="Sunrise"
+                            android:text="@string/sunrise"
                             android:textColor="@android:color/darker_gray"
                             android:textSize="16sp" />
 
@@ -189,7 +189,7 @@
                             android:id="@+id/tvSunriseValue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_toRightOf="@+id/tvSunrise"
+                            android:layout_toEndOf="@+id/tvSunrise"
                             android:padding="5dp"
                             android:text=""
                             android:textColor="@android:color/white"
@@ -201,7 +201,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tvSunrise"
                             android:padding="5dp"
-                            android:text="Sunset"
+                            android:text="@string/sunset"
                             android:textColor="@android:color/darker_gray"
                             android:textSize="16sp" />
 
@@ -246,7 +246,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:text="Wind"
+                        android:text="@string/wind"
                         android:textColor="@android:color/white"
                         android:textSize="18sp" />
 
@@ -255,15 +255,16 @@
                         android:layout_height="120dp"
                         android:layout_below="@+id/tvWindmill"
                         android:layout_marginTop="10dp"
-                        android:background="@drawable/windmill" />
+                        android:background="@drawable/windmill"
+                        android:contentDescription="@string/wind"/>
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="50dp">
+                    android:layout_marginEnd="50dp">
 
 
                     <TextView
@@ -271,7 +272,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
-                        android:text="Direction"
+                        android:text="@string/direction"
                         android:textColor="@android:color/darker_gray"
                         android:textSize="16sp" />
 
@@ -279,7 +280,7 @@
                         android:id="@+id/tvWindDirectionValue"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/tvWindDirection"
+                        android:layout_toEndOf="@+id/tvWindDirection"
                         android:padding="5dp"
                         android:text=""
                         android:textColor="@android:color/white"
@@ -291,7 +292,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tvWindDirection"
                         android:padding="5dp"
-                        android:text="Speed"
+                        android:text="@string/speed"
                         android:textColor="@android:color/darker_gray"
                         android:textSize="16sp" />
 
@@ -300,7 +301,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tvWindDirection"
-                        android:layout_toRightOf="@+id/tvWindSpeed"
+                        android:layout_toEndOf="@+id/tvWindSpeed"
                         android:padding="5dp"
                         android:text=""
                         android:textColor="@android:color/white"

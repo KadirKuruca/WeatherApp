@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -17,19 +18,23 @@
             android:layout_height="60dp"
             android:layout_centerHorizontal="true"
             android:padding="5dp"
-            android:text="Connection Error. Please turn on the Network"
+            android:text="@string/connection_error_msg"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
         <Button
             android:id="@+id/btnNetworkControl"
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:padding="5dp"
+            android:layout_height="50dp"
             android:layout_below="@+id/tvNetworkMessage"
             android:layout_centerHorizontal="true"
-            android:text="Tekrar Dene"
-            android:textSize="18sp" />
+            android:padding="10dp"
+            android:background="@drawable/drawable_button"
+            android:text="@string/try_again"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            tools:targetApi="m" />
     </RelativeLayout>
 
 </RelativeLayout>

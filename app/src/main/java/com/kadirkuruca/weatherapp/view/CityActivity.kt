@@ -1,8 +1,6 @@
 package com.kadirkuruca.weatherapp.view
 
-import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.LinearLayout
@@ -36,6 +34,10 @@ class CityActivity : AppCompatActivity() {
             viewModel.controlNetwork()
         }
 
+        swiperCity.setOnRefreshListener {
+            viewModel.getLocationAndNearbyCities()
+        }
+
         viewModel.showProgress.observe(this, Observer {
             if(it)
                 progress.visibility = VISIBLE
@@ -45,7 +47,7 @@ class CityActivity : AppCompatActivity() {
 
         viewModel.isOnline.observe(this, Observer {
             if(it){
-                viewModel.getLocation()
+                viewModel.getLocationAndNearbyCities()
                 frameConnection.visibility = GONE
             }
             else{
@@ -54,13 +56,14 @@ class CityActivity : AppCompatActivity() {
         })
 
         viewModel.nearbyCities.observe(this, Observer {
+            swiperCity.isRefreshing = false
             adapter.setLocationList(it)
         })
     }
 
     private fun init(){
         val actionbar = supportActionBar
-        actionbar!!.title = "Şehir Seçiniz"
+        actionbar!!.title = this.getString(R.string.select_city)
 
         layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
         viewModel = ViewModelProvider.AndroidViewModelFactory(application).create(CityActivityViewModel::class.java)

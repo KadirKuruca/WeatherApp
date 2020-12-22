@@ -86,6 +86,7 @@ class CityWeatherDetailActivity : AppCompatActivity() {
         val actionbar = supportActionBar
         actionbar!!.setDisplayHomeAsUpEnabled(true)
         actionbar.setDisplayHomeAsUpEnabled(true)
+        actionbar.title = "Details"
 
         viewModel = ViewModelProvider.AndroidViewModelFactory(application).create(
             CityWeatherDetailActivityViewModel::class.java)

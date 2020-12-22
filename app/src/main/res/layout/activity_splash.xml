@@ -6,4 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".view.SplashActivity"
     android:background="@drawable/background">
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_above="@+id/tvLogoDesc"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/logo"/>
+
+    <TextView
+        android:id="@+id/tvLogoDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/logo_name"/>
 </RelativeLayout>

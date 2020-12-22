@@ -3,6 +3,7 @@ package com.kadirkuruca.weatherapp.repository
 import android.app.Application
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
+import com.kadirkuruca.weatherapp.R
 import com.kadirkuruca.weatherapp.network.BASE_URL
 import com.kadirkuruca.weatherapp.network.Model.CityLocations
 import com.kadirkuruca.weatherapp.network.Model.WeatherInfo
@@ -36,7 +37,7 @@ class CityWeatherDetailActivityRepository(val application: Application) {
             service.getLocationWeather(woeid).enqueue(object : Callback<WeatherInfo> {
                 override fun onFailure(call: Call<WeatherInfo>, t: Throwable) {
                     showProgress.value = false
-                    Toast.makeText(application,"Şehirler getirilirken hata oluştu!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(application,application.getString(R.string.cities_listing_error), Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onResponse(
