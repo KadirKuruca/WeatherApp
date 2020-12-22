@@ -37,7 +37,7 @@ class CityWeatherDetailActivityRepository(val application: Application) {
             service.getLocationWeather(woeid).enqueue(object : Callback<WeatherInfo> {
                 override fun onFailure(call: Call<WeatherInfo>, t: Throwable) {
                     showProgress.value = false
-                    Toast.makeText(application,application.getString(R.string.cities_listing_error), Toast.LENGTH_SHORT).show()
+                    weatherInfo.value = null
                 }
 
                 override fun onResponse(

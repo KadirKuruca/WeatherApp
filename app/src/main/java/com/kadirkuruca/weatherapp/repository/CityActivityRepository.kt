@@ -10,6 +10,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.google.android.gms.location.FusedLocationProviderClient
+import com.kadirkuruca.weatherapp.R
 import com.kadirkuruca.weatherapp.network.BASE_URL
 import com.kadirkuruca.weatherapp.network.Model.CityLocations
 import com.kadirkuruca.weatherapp.network.WeatherNetwork
@@ -62,12 +63,8 @@ class CityActivityRepository(val application: Application) {
         var location = "${location.latitude},${location.longitude}"
         service.getCitiesFromLocation(location).enqueue(object : Callback<List<CityLocations>> {
             override fun onFailure(call: Call<List<CityLocations>>, t: Throwable) {
+                nearbyCities.value = null
                 showProgress.value = false
-                Toast.makeText(
-                    application,
-                    "Şehirler getirilirken hata oluştu!",
-                    Toast.LENGTH_SHORT
-                ).show()
             }
 
             override fun onResponse(

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -71,7 +72,10 @@ class CityWeatherDetailActivity : AppCompatActivity() {
 
         viewModel.weatherInfo.observe(this, Observer {
             swiper.isRefreshing = false
-            setViewValue(it)
+            if(it != null)
+                setViewValue(it)
+            else
+                Toast.makeText(this,this.getString(R.string.detail_error_msg), Toast.LENGTH_SHORT).show()
         })
 
         viewModel.showProgress.observe(this, Observer {

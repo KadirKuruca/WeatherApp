@@ -20,5 +20,6 @@
     <string name="wind">Wind</string>
     <string name="direction">Direction</string>
     <string name="speed">Speed</string>
-    <string name="cities_listing_error">Error occurred while listing cities!</string>
+    <string name="cities_listing_error">An error occurred while listing cities!</string>
+    <string name="detail_error_msg">An error occurred while listing the weather details.!</string>
 </resources>

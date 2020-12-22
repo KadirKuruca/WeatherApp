@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -57,7 +58,10 @@ class CityActivity : AppCompatActivity() {
 
         viewModel.nearbyCities.observe(this, Observer {
             swiperCity.isRefreshing = false
-            adapter.setLocationList(it)
+            if(it != null && it.isNotEmpty())
+                adapter.setLocationList(it)
+            else
+                Toast.makeText(this,getString(R.string.cities_listing_error), Toast.LENGTH_SHORT).show()
         })
     }
 
@@ -65,7 +69,7 @@ class CityActivity : AppCompatActivity() {
         val actionbar = supportActionBar
         actionbar!!.title = this.getString(R.string.select_city)
 
-        layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
+        layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         viewModel = ViewModelProvider.AndroidViewModelFactory(application).create(CityActivityViewModel::class.java)
 
         adapter = CityAdapter(this)
